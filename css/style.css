@@ -1,0 +1,330 @@
+body{
+    font-family: "Josefin Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-image: url(fundo4.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* Garante que a imagem cubra todo o body */
+    background-position: center;
+    background-attachment: fixed; /*Imagem fica fixa, não rola junto com a tela */
+}
+
+main {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container-page {
+    display: flex;
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 10px; /* Espaço entre editor e preview */
+    width: 90%; /* Largura mais flexível */
+    max-width: 1600px; /* Limite máximo */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 20px;
+}
+#editor {
+    flex: 0 0 400px; /* Largura fixa de 400px (não cresce/não encolhe) */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+.cabecalho{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 5px;
+}
+.cabecalho #addElementButton{
+    background-color: aliceblue;
+    color: black;
+}
+.cabecalho #addElementButton:hover{
+    background-color: rgb(157, 77, 3);
+    color: black;
+}
+.elementSizeWidth,
+.elementSizeHeight{
+    max-height: 600px;
+    min-height: 0px;
+    max-width: 600px;
+    min-width: 0px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 5px;
+    margin-top: 10px;
+}
+.galeria{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 5px;
+    margin-top: 10px;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 5px;
+    margin-top: 10px;
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid beige;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 5px;
+    margin-top: 10px;
+}
+.form-label{
+    margin-top: 3%; /*distancia do titulo*/
+
+}
+
+.editor-form label.form-label { /*texto ficar mais proximo dos campos*/
+    margin-bottom: 0; 
+}
+/*---------------ESTILIZAR BOTÕES-------------*/
+.editor-form input[type="file"].form-control {
+    display: flex;
+    align-items: center;
+    height: auto;
+    background-color: transparent; /*fundo transparente*/
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editor-form input, /*botões em geral */
+.editor-form  select,
+.editor-form  button,
+.galeria #card-form button#adicionar-card-btn {
+    width: 100%; /*garantir que os campos ocupem todo o espaço */    
+    height: 40px;    
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 5px; /*ajustar altura*/
+    cursor: pointer;
+}
+/*-----------------------------------------*/
+/*---------------HEADER GERADA------------*/
+#pagePreview {
+    flex: 1; /* Ocupa o espaço restante */
+    min-width: 400px; /* Largura mínima */
+    margin-top: 0; /* Remove a margem superior anterior */
+    padding: 20px; /*Espaço interno de 20px em todos os lados.*/
+}
+
+.headerPage {
+    position: relative; /* Container para elementos absolutos */
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center; /*Centraliza os filhos verticalmente.*/
+    padding-left: 150px; /* Espaço reservado para a logo */
+    box-sizing: border-box;
+    overflow: hidden; /*Esconde conteúdo que ultrapassar os limites.*/
+    gap: 20px; /* Espaço entre textos */
+}
+
+.headerPage span.textHeader {
+    display: flex;
+    position: relative;
+    align-items: center;    
+    padding: 5px 10px; /*5px em cima/baixo e 10px nas laterais.*/
+    margin-right: 30px;       /* espaço entre textos */
+    max-width: 30%;           /* limite de largura */
+    white-space: nowrap;      /* texto em uma linha */
+    word-wrap: normal;        /* quebra só se ultrapassar max-width */
+    vertical-align: middle;   /* alinhamento com botão */
+    z-index: 1;              /* garante que fique acima do header */
+}
+
+/* Estilo do container da imagem */
+.img-container {
+    position: absolute;
+    left: 20px; /*distância da borda esquerda.*/
+    top: 50%; /*alinha o topo da logo ao centro vertical.*/
+    transform: translateY(-50%); /*move a logo para cima em 50% da sua altura (centralizando).*/
+    z-index: 10; /*garante que a logo sempre fica acima do cabeçalho*/
+}
+.img-container img {
+    height: 80px;
+    width: auto;
+    max-width: 200px; /*limite para não distorcer em imagens muito largas.*/
+    display: block;
+}
+
+.excluir-campo {
+    margin-left: 8px;
+    background: #1b0f5b;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 5px; /*espaço interno pequeno.*/
+    font-size: 12px;
+    cursor: pointer;
+}
+.excluir-campo:hover{
+    background: #3219ba;
+    color:white;
+}
+/*-----------------------------------------*/
+/*-----------------MENU---------------------*/
+.menu-container {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.menu-item {
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+/*-----------------------GALERIA------------------*/
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap; /*cards quebrem para prox linha*/
+    gap: 15px; /*espaçamento entre os cards*/
+    padding: 15px;
+    background-color: #f5f5f5;
+    min-height: 200px;
+    margin: 20px;
+}
+.gallery-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /*Sombra sutil*/
+    transition: transform 0.3s ease; /*animação ao passar o mouse*/
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 200px;
+    max-height: 400px;
+}
+
+/* Sistema de proporções para a imagem */
+.gallery-card .image-container {
+    flex: 0 0 60%; /* não cresce, não encolhe, ocupa 60% do card */
+    overflow: hidden; /* esconde qualquer conteúdo que ultrapasse */
+    position: relative;
+    min-height: 200px;
+}
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cobre todo o espaço mantendo proporções */
+}
+
+.gallery-card-content {
+    padding: 15px;
+    flex: 1; /* ocupa o espaço restante (40%) */
+    display: flex;
+    flex-direction: column;
+    min-height: 80px; 
+    overflow: hidden;
+}
+
+.gallery-card h3 {
+    margin: 0 0 8px 0; /* margem: 0 topo, 0 direita, 8px inferior, 0 esquerda */
+    font-size: 16px;
+    font-weight: bold; /* texto em negrito */
+    color: #333;
+    word-break: break-word; /* quebra palavras longas */
+}
+
+.gallery-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    flex-grow: 1; /* ocupa todo espaço vertical disponível */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /* sistema de layout para limitar linhas */
+    -webkit-box-orient: vertical; /* organiza o texto verticalmente */
+}
+/*--------------------FORMULARIO-----------------------*/
+
+.formPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    gap: 15px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto; /* centraliza o formulario na pagina */
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* container de cada campo */
+.campo-formulario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* distribui o espaço entre os elementos */
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+/* estilo para os labels */
+.campo-formulario label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.campo-formulario input {
+    flex: 2;
+    width: auto; /* remove largura fixa */
+}
+
+.excluir-campo {
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    flex-shrink: 0; /* Impede que o botão diminua */
+}
+
+.formTitleElement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
