@@ -380,7 +380,8 @@ h5{
 }
 
 .footer-item {
-    padding: 6px 8px;
+    ax-height: 40px;
+    padding: 4px 8px;
     border-radius: 4px;
     background: var(--item-bg, #e0e0e0);
     display: inline-flex;
