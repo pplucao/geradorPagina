@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor de Página HTML</title>
     <meta name="description" content="Controles editáveis que permitem a criação de uma página HTML pesonalizada">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Share+Tech&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Share+Tech&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Cabeçalho página principal-->
@@ -30,282 +30,323 @@
         <div id="container-page">
             <div id="editor"> 
                <h3>EDITOR DE PÁGINA</h3>
-   
-               <!--CABEÇALHO-->
-               <div class="cabecalho">
-                   <!--cor de fundo do cabeçalho-->
-                   <h5>CABEÇALHO</h5>
-                   <div class="editor-form">
-                       <label class="form-label" for="headerBgColor">COR DE FUNDO DO CABEÇALHO</label>
-                       <input class="form-control" id="headerBgColor" type="color" value="#ffffff">
-                   </div>
-       
-                   <!--tamanho da borda-->
-                   <div class="editor-form">
-                       <label class="form-label" for="headerBorder">BORDA DO CABEÇALHO (max 20px)</label>
-                       <input class="form-control" id="headerBorder" type="number" value="0" min="0" max="20">
-                   </div>
+               
+               <!-- Abas de navegação -->
+               <ul class="nav nav-tabs" id="editorTabs" role="tablist">
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link active" id="header-tab" data-bs-toggle="tab" data-bs-target="#header" type="button" role="tab">Cabeçalho</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="menu-tab" data-bs-toggle="tab" data-bs-target="#menu" type="button" role="tab">Menu</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery" type="button" role="tab">Galeria</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="form-tab" data-bs-toggle="tab" data-bs-target="#form" type="button" role="tab">Formulário</button>
+                 </li>
+                 <li class="nav-item" role="presentation">
+                   <button class="nav-link" id="footer-tab" data-bs-toggle="tab" data-bs-target="#footer" type="button" role="tab">Rodapé</button>
+                 </li>
+               </ul>
+               
+               <!-- Conteúdo das abas -->
+               <div class="tab-content" id="editorTabContent">
+                 <!--CABEÇALHO-->
+                 <div class="tab-pane fade show active" id="header" role="tabpanel" aria-labelledby="header-tab">
+                   <div class="cabecalho">
+                       <!--cor de fundo do cabeçalho-->
+                       <h5>CABEÇALHO</h5>
+                       <div class="editor-form">
+                           <label class="form-label" for="headerBgColor">COR DE FUNDO DO CABEÇALHO</label>
+                           <input class="form-control" id="headerBgColor" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--tamanho da borda-->
+                       <div class="editor-form">
+                           <label class="form-label" for="headerBorder">BORDA DO CABEÇALHO (max 20px)</label>
+                           <input class="form-control" id="headerBorder" type="number" value="0" min="0" max="20">
+                       </div>
 
-                   <!--cor da borda-->
-                   <div class="editor-form">
-                       <label class="form-label" for="headerBorderColor">COR DA BORDA</label>
-                       <input class="form-control" id="headerBorderColor" type="color" value="#ffffff">
-                   </div>
+                       <!--cor da borda-->
+                       <div class="editor-form">
+                           <label class="form-label" for="headerBorderColor">COR DA BORDA</label>
+                           <input class="form-control" id="headerBorderColor" type="color" value="#ffffff">
+                       </div>
 
-                   <!--tipo de elemento-->
-                   <div class="editor-form">
-                   <label class="form-label" for="elementType">TIPO DE ELEMENTO</label>
-                   <select class="form-control" id="elementType">
-                       <option value="text">TEXTO</option>
-                       <option value="image">LOGO</option>
-                   </select>
-                   </div>
-       
-                   <!--conteudo do elemento-->
-                   <div class="editor-form">
-                       <label class="form-label" for="elementContent">CONTEUDO DO ELEMENTO</label>
-                       <input class="form-control" id="elementContent" type="text" placeholder="DIGITE O TEXTO">
-                       <input class="form-control d-none" id="elementImage" type="file" accept="image/*">
-                   </div>
-       
-                   <!--cor do texto-->
-                   <div class="editor-form">
-                       <label class="form-label" for="textColor">COR DO TEXTO</label>
-                       <input class="form-control" id="textColor" type="color">
-                   </div>
-       
-       
-                   <!--tamanho do texto (em px)-->
-                   <div class="editor-form">
-                       <label for="elementSize" class="form-label">LARGURA DO ELEMENTO (max: 20px)</label>
-                       <input id="elementSize" type="number" class="form-control" min="1" max="20" value="16" placeholder="Ex: 12">
-                   </div>
-
-                   <button onclick="adicionarHeader()" class="botao-redondo">Adicionar Cabeçalho</button>
-               </div>
-   
-               <!--MENU-->
-               <div class="menu">     
-                <h5>MENU</h5>
-                   <!--cor de fundo menu-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-color">COR DE FUNDO DO MENU</label>
-                       <input class="form-control" id="menu-color" type="color" value="#ffffff">
-                   </div>
-       
-                   <!--cor do texto do menu-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-text-color">COR DO TEXTO DO MENU</label>
-                       <input class="form-control" id="menu-text-color" type="color" value="#ffffff">
-                   </div>
-       
-                   <!--cor de fundo dos itens do menu-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-itens-color">COR DE FUNDO DOS ITENS DO MENU</label>
-                       <input class="form-control" id="menu-itens-color" type="color" value="#ffffff">
-                   </div>
-       
-                   <!--borda dos itens-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-item-border">BORDA DOS ITENS (max:10)</label>
-                       <input class="form-control" id="menu-item-border" type="number" value="0" min="0" max="10">
-                   </div>
-       
-                   <!--espaçamento itens-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-spacing">ESPAÇAMENTO ENTRE OS ITENS (max:30)</label>
-                       <input class="form-control" id="menu-spacing" type="number" value="20" min="10" max="30">
-                   </div>
-       
-                   <!--altura do menu-->
-                   <div class="editor-form">
-                       <label class="form-label" for="menu-height">ALTURA DO MENU (max:100)</label>
-                       <input class="form-control" id="menu-height" type="number" value="80" min="80" max="100">
-                   </div>
-       
-                   <!--alinhamento dos itens-->
-                   <div class="editor-form">
-                       <label class="form-label" for="aligm-itens">ALINHAMENTO DOS ITENS</label>
-                       <select class="form-control" id="aligm-itens">
-                           <option value="left">Esquerda</option>
-                           <option value="right">Direita</option>
-                           <option value="center">Centro</option>
+                       <!--tipo de elemento-->
+                       <div class="editor-form">
+                       <label class="form-label" for="elementType">TIPO DE ELEMENTO</label>
+                       <select class="form-control" id="elementType">
+                           <option value="text">TEXTO</option>
+                           <option value="image">LOGO</option>
                        </select>
-                   </div>
-       
-                   <!--adicionar item-->
-                   <div class="editor-form">
-                       <label class="form-label" for="add-item">ADICIONAR ITEM</label>
-                       <input class="form-control" id="add-item" type="text" placeholder="nome do item">
-                       <button id="add-item-button">Adicionar</button>
-
-                       <button id="clear-item-button">Limpar item</button>
-                   </div>
-
-               </div>
-   
-               <!--GALERIA-->
-               <div class="galeria">
-                   <form id="card-form">
-                    <h5>GALERIA</h5>
-                       <!--adicionar imagem-->
-                       <label class="form-label" for="image-file">SELECIONE UMA IMAGEM OU GIF</label>
-                       <input class="form-control" id="image-file" type="file" accept="image/*">
-   
-                       <!--adicionar titulo-->
-                       <label class="form-label" for="card-title">TITULO</label>
-                       <input class="form-control" id="card-title" type="text" placeholder="titulo">
-   
-                       <!--adicionar descrição-->
-                       <label class="form-label" for="card-description">DESCRIÇÃO</label>
-                       <textarea class="form-control" id="card-description"  placeholder="descrição"></textarea>
-   
-                       <!--cor de fundo-->
-                       <label class="form-label" for="card-color">COR DE FUNDO</label>
-                       <input class="form-control" id="card-color" type="color" value="#ffffff">
-   
+                       </div>
+           
+                       <!--conteudo do elemento-->
+                       <div class="editor-form">
+                           <label class="form-label" for="elementContent">CONTEUDO DO ELEMENTO</label>
+                           <input class="form-control" id="elementContent" type="text" placeholder="DIGITE O TEXTO">
+                           <input class="form-control d-none" id="elementImage" type="file" accept="image/*">
+                       </div>
+           
                        <!--cor do texto-->
-                       <label class="form-label" for="card-color-text">COR DO TEXTO</label>
-                       <input class="form-control" id="card-color-text" type="color" value="#ffffff">
-   
-                       <!--estilo de borda-->
-                       <label class="form-label" for="card-border">BORDA</label>
-                       <input class="form-control" id="card-border" type="number" value="0" min="0" max="10">
-   
-                       <!--largura card-->
-                       <label class="form-label" for="card-width">LARGURA DO CARD (px)</label>
-                       <input class="form-control" id="card-width" type="number" value="300" min="200" max="400">
-   
-                       <!--altura card-->
-                       <label class="form-label" for="card-height">ALTURA DO CARD (px)</label>
-                       <input class="form-control" id="card-height" type="number" value="300" min="200" max="400">
-   
-                       <!--espaçamento entre os card-->
-                       <label class="form-label" for="card-spacing">ESPAÇAMENTO (px)</label>
-                       <input class="form-control" id="card-spacing" type="number" value="10" min="0" max="20">
+                       <div class="editor-form">
+                           <label class="form-label" for="textColor">COR DO TEXTO</label>
+                           <input class="form-control" id="textColor" type="color">
+                       </div>
+           
+                       <!--tamanho do texto (em px)-->
+                       <div class="editor-form">
+                           <label for="elementSize" class="form-label">LARGURA DO ELEMENTO (max: 20px)</label>
+                           <input id="elementSize" type="number" class="form-control" min="1" max="20" value="16" placeholder="Ex: 12">
+                       </div>
+
+                       <button onclick="adicionarHeader()" class="botao-redondo">Adicionar Cabeçalho</button>
+                   </div>
+                 </div>
+                 
+                 <!--MENU-->
+                 <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                   <div class="menu">     
+                       <h5>MENU</h5>
+                       <!--cor de fundo menu-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-color">COR DE FUNDO DO MENU</label>
+                           <input class="form-control" id="menu-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--cor do texto do menu-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-text-color">COR DO TEXTO DO MENU</label>
+                           <input class="form-control" id="menu-text-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--cor de fundo dos itens do menu-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-itens-color">COR DE FUNDO DOS ITENS DO MENU</label>
+                           <input class="form-control" id="menu-itens-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--borda dos itens-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-item-border">BORDA DOS ITENS (max:10)</label>
+                           <input class="form-control" id="menu-item-border" type="number" value="0" min="0" max="10">
+                       </div>
+           
+                       <!--espaçamento itens-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-spacing">ESPAÇAMENTO ENTRE OS ITENS (max:30)</label>
+                           <input class="form-control" id="menu-spacing" type="number" value="20" min="10" max="30">
+                       </div>
+           
+                       <!--altura do menu-->
+                       <div class="editor-form">
+                           <label class="form-label" for="menu-height">ALTURA DO MENU (max:100)</label>
+                           <input class="form-control" id="menu-height" type="number" value="80" min="80" max="100">
+                       </div>
+           
+                       <!--alinhamento dos itens-->
+                       <div class="editor-form">
+                           <label class="form-label" for="aligm-itens">ALINHAMENTO DOS ITENS</label>
+                           <select class="form-control" id="aligm-itens">
+                               <option value="left">Esquerda</option>
+                               <option value="right">Direita</option>
+                               <option value="center">Centro</option>
+                           </select>
+                       </div>
+           
+                       <!--adicionar item-->
+                       <div class="editor-form">
+                           <label class="form-label" for="add-item">ADICIONAR ITEM</label>
+                           <input class="form-control" id="add-item" type="text" placeholder="nome do item">
+                           <button id="add-item-button">Adicionar</button>
+
+                           <button id="clear-item-button">Limpar item</button>
+                       </div>
+                   </div>
+                 </div>
+                 
+                 <!--GALERIA-->
+                 <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+                   <div class="galeria">
+                       <form id="card-form">
+                           <h5>GALERIA</h5>
+                           <!--adicionar imagem-->
+                           <label class="form-label" for="image-file">SELECIONE UMA IMAGEM OU GIF</label>
+                           <input class="form-control" id="image-file" type="file" accept="image/*">
+           
+                           <!--adicionar titulo-->
+                           <label class="form-label" for="card-title">TITULO</label>
+                           <input class="form-control" id="card-title" type="text" placeholder="titulo">
+           
+                           <!--adicionar descrição-->
+                           <label class="form-label" for="card-description">DESCRIÇÃO</label>
+                           <textarea class="form-control" id="card-description"  placeholder="descrição"></textarea>
+           
+                           <!--cor de fundo-->
+                           <label class="form-label" for="card-color">COR DE FUNDO</label>
+                           <input class="form-control" id="card-color" type="color" value="#ffffff">
+           
+                           <!--cor do texto-->
+                           <label class="form-label" for="card-color-text">COR DO TEXTO</label>
+                           <input class="form-control" id="card-color-text" type="color" value="#ffffff">
+           
+                           <!--estilo de borda-->
+                           <label class="form-label" for="card-border">BORDA</label>
+                           <input class="form-control" id="card-border" type="number" value="0" min="0" max="10">
+           
+                           <!--largura card-->
+                           <label class="form-label" for="card-width">LARGURA DO CARD (px)</label>
+                           <input class="form-control" id="card-width" type="number" value="300" min="200" max="400">
+           
+                           <!--altura card-->
+                           <label class="form-label" for="card-height">ALTURA DO CARD (px)</label>
+                           <input class="form-control" id="card-height" type="number" value="300" min="200" max="400">
+           
+                           <!--espaçamento entre os card-->
+                           <label class="form-label" for="card-spacing">ESPAÇAMENTO (max: 30px)</label>
+                           <input class="form-control" id="card-spacing" type="number" value="10" min="0" max="20">
+
+                           <div class="editor-form">
+                               <button id="adicionar-card-btn" class="botao-redondo">Adicionar Card</button>
+                           </div>
+                       </form>
+                   </div>
+                 </div>
+                 
+                 <!--FORMULARIO-->
+                 <div class="tab-pane fade" id="form" role="tabpanel" aria-labelledby="form-tab">
+                   <div class="formulario">
+                       <h5>FORMULÁRIO</h5>
+                       <!--nome formulario-->
+                       <div class="editor-form">
+                           <label for="name-form">NOME DO FORMULÁRI0:</label>
+                           <input type="text" id="name-form">
+                       </div>
+           
+                       <!--estilo da borda-->
+                       <div class="editor-form">
+                           <label class="form-label" for="form-border">RAIO DA BORDA DO FORMULARIO (max:10)</label>
+                           <input class="form-control" id="form-border" type="number" value="0" min="0" max="10">
+                       </div>
+           
+                       <!--cor da letra-->
+                       <div class="editor-form">
+                           <label for="form-text-color">COR DA LETRA:</label>
+                           <input type="color" id="form-text-color" value="#ffffff">
+                       </div>
+                       
+                       <!--cor do fundo-->
+                       <div class="editor-form">
+                           <label for="form-color">COR DO FUNDO:</label>
+                           <input type="color" id="form-color" value="#ffffff">
+                       </div>
+           
+                       <!--tipo do campo-->
+                       <div class="editor-form">
+                           <label for="type-camp">TIPO DE CAMPO:</label>
+                           <select id="type-camp">
+                               <option value="text">Texto</option>
+                               <option value="tel">Telefone</option>
+                               <option value="date">Data</option>
+                               <option value="radio">Radio</option>
+                           </select>
+                       </div>            
+           
+                       <!--nome do campo-->
+                       <div class="editor-form">
+                           <label for="name-camp">NOME DO CAMPO:</label>
+                           <input type="text" id="name-camp" maxlength="14" placeholder="nome do campo">
+                       </div>
 
                        <div class="editor-form">
-                        <button id="adicionar-card-btn" class="botao-redondo">Adicionar Card</button>
-                    </div>
-                   </form>
-               </div>
-   
-               <!--FORMULARIO-->
-               <div class="formulario">
-                <h5>FORMULÁRIO</h5>
-                   <!--nome formulario-->
-                   <div class="editor-form">
-                       <label for="name-form">NOME DO FORMULÁRI0:</label>
-                       <input type="text" id="name-form">
+                        <button id="btn-adicionar-campo">Adicionar Campo</button>
+                       </div>
                    </div>
-   
-                   <!--estilo da borda-->
-                   <div class="editor-form">
-                       <label class="form-label" for="form-border">RAIO DA BORDA DO FORMULARIO (max:10)</label>
-                       <input class="form-control" id="form-border" type="number" value="0" min="0" max="10">
+                 </div>
+                 
+                 <!--RODAPÉ-->
+                 <div class="tab-pane fade" id="footer" role="tabpanel" aria-labelledby="footer-tab">
+                   <div class="footer">
+                       <h5>RODAPÉ</h5>
+
+                       <!--cor de fundo footer-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-color">COR DE FUNDO DO RODAPÉ</label>
+                           <input class="form-control" id="footer-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--cor do texto do rodapé-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-text-color">COR DO TEXTO DO RODAPÉ</label>
+                           <input class="form-control" id="footer-text-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--cor de fundo dos itens do rodapé-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-item-color">COR DE FUNDO DOS ITENS DO RODAPÉ</label>
+                           <input class="form-control" id="footer-item-color" type="color" value="#ffffff">
+                       </div>
+           
+                       <!--borda dos itens rodapé-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-item-border">BORDA DOS ITENS</label>
+                           <input class="form-control" id="footer-item-border" type="number" value="0" min="0" max="10">
+                       </div>
+           
+                       <!--espaçamento itens rodapé-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-spacing">ESPAÇAMENTO ENTRE OS ITENS (max:30)</label>
+                           <input class="form-control" id="footer-spacing" type="number" value="20" min="10" max="30">
+                       </div>
+           
+                       <!--altura do rodapé-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-height">ALTURA DO RODAPÉ (max:200)</label>
+                           <input class="form-control" id="footer-height" type="number" value="80" min="70" max="200">
+                       </div>
+           
+                       <!--alinhamento dos itens-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-aligm-itens">ALINHAMENTO DOS ITENS</label>
+                           <select class="form-control" id="footer-aligm-itens">
+                               <option value="left">Esquerda</option>
+                               <option value="right">Direita</option>
+                               <option value="center">Centro</option>
+                           </select>
+                       </div>
+           
+                       <!--adicionar item-->
+                       <div class="editor-form">
+                           <label class="form-label" for="footer-add-item">NOME DO ITEM (max: 12 caracteres)</label>
+                           <input class="form-control" id="footer-add-item" type="text" placeholder="nome do item">
+                       </div>
+
+                       <div class="editor-form">
+                        <button id="btn-adicionar-rodape">Adicionar Rodapé</button>
+                       </div>
                    </div>
-   
-                   <!--cor da letra-->
-                   <div class="editor-form">
-                       <label for="form-text-color">COR DA LETRA:</label>
-                       <input type="color" id="form-text-color" value="#ffffff">
-                   </div>
-                   
-                   <!--cor do fundo-->
-                   <div class="editor-form">
-                       <label for="form-color">COR DO FUNDO:</label>
-                       <input type="color" id="form-color" value="#ffffff">
-                   </div>
-   
-                   <!--tipo do campo-->
-                   <div class="editor-form">
-                       <label for="type-camp">TIPO DE CAMPO:</label>
-                       <select id="type-camp">
-                           <option value="text">Texto</option>
-                           <option value="tel">Telefone</option>
-                           <option value="date">Data</option>
-                           <option value="radio">Radio</option>
-                       </select>
-                   </div>            
-   
-                   <!--nome do campo-->
-                   <div class="editor-form">
-                       <label for="name-camp">NOME DO CAMPO:</label>
-                       <input type="text" id="name-camp" maxlength="14" placeholder="nome do campo">
-                   </div>
-
-                   <div class="editor-form">
-                    <button onclick="adicionarCampo()" class="botao-redondo" id="btn-adicionar-campo" disabled>Adicionar Campo</button>
-                    </div>
-   
-               </div>
-
-               <!--RODAPÉ-->
-               <div class="footer">
-                <h5>RODAPÉ</h5>
-
-                <!--cor de fundo footer-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-color">COR DE FUNDO DO RODAPÉ</label>
-                    <input class="form-control" id="footer-color" type="color" value="#ffffff">
-                </div>
-    
-                <!--cor do texto do rodapé-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-text-color">COR DO TEXTO DO RODAPÉ</label>
-                    <input class="form-control" id="footer-text-color" type="color" value="#ffffff">
-                </div>
-    
-                <!--cor de fundo dos itens do rodapé-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-item-color">COR DE FUNDO DOS ITENS DO RODAPÉ</label>
-                    <input class="form-control" id="footer-item-color" type="color" value="#ffffff">
-                </div>
-    
-                <!--borda dos itens rodapé-->
-                <div class="editor-form">
-                    <label class="form-label" for="fooder-item-border">BORDA DOS ITENS</label>
-                    <input class="form-control" id="fooder-item-border" type="number" value="0" min="0">
-                </div>
-    
-                <!--espaçamento itens rodapé-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-spacing">ESPAÇAMENTO ENTRE OS ITENS (max:60)</label>
-                    <input class="form-control" id="footer-spacing" type="number" value="20" min="0" max="60">
-                </div>
-    
-                <!--altura do rodapé-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-height">ALTURA DO RODAPÉ</label>
-                    <input class="form-control" id="footer-height" type="number" value="20" min="20" max="40">
-                </div>
-    
-                <!--alinhamento dos itens-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-aligm-itens">ALINHAMENTO DOS ITENS</label>
-                    <select class="form-control" id="footer-aligm-itens">
-                        <option value="left">Esquerda</option>
-                        <option value="rigth">Direita</option>
-                        <option value="center">Centro</option>
-                    </select>
-                </div>
-    
-                <!--adicionar item-->
-                <div class="editor-form">
-                    <label class="form-label" for="footer-add-item">ADICIONAR ITEM</label>
-                    <input class="form-control" id="footer-add-item" type="text" placeholder="nome do item">
-                </div>
-
-                <div class="editor-form">
-                    <button onclick="adicionarRodape()" class="botao-redondo">Adicionar Rodapé</button>
-                </div>
-
+                 </div>
                </div>
             </div>
             <div id="pagePreview">
             </div>
         </div>
     </main>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <div class="storage-controls">
+        <button id="saveToLocalStorage" class="btn btn-primary">Salvar no LocalStorage</button>
+        <button id="loadFromLocalStorage" class="btn btn-secondary">Carregar do LocalStorage</button>
+        <button id="clearLocalStorage" class="btn btn-danger">Limpar LocalStorage</button>
+    </div>
+
+
+    <!-- Adicione esta div para exibir o código -->
+    <div id="codeDisplay" class="mt-3 p-3 bg-light border rounded" style="display:none;">
+        <pre id="htmlCodeContent"></pre>
+    </div>
 </body>
 </html>
