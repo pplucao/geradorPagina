@@ -572,7 +572,7 @@ function adicionarCard() {
         const cardBorder = Math.min(cardBorderValue, maxBorder);
 
         //========== APLICA BORDA E COR DO TEXTO ==========
-        card.style.border = `${cardBorder}px solid ${cardColorText}`;
+        card.style.border = `${cardBorder}px solid #ccc`;
 
         if (parseInt(cardBorder) > maxBorder) {
             alert(`O valor máximo para a borda é ${maxBorder}px!`);
@@ -596,11 +596,13 @@ function adicionarCard() {
         // Adicionar título
         const title = document.createElement('h3');
         title.textContent = cardTitle || "Sem título"; 
+        title.style.color = cardColorText.value;
         content.appendChild(title);
 
         // Adicionar descrição
         const description = document.createElement('p');
         description.textContent = cardDescription || "Sem descrição";
+        description.style.color = cardColorText.value;
         content.appendChild(description);
 
         card.appendChild(content);
