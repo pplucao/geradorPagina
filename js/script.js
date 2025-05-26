@@ -596,13 +596,13 @@ function adicionarCard() {
         // Adicionar título
         const title = document.createElement('h3');
         title.textContent = cardTitle || "Sem título"; 
-        title.style.color = cardColorText.value;
+        title.style.color = cardColorText;
         content.appendChild(title);
 
         // Adicionar descrição
         const description = document.createElement('p');
         description.textContent = cardDescription || "Sem descrição";
-        description.style.color = cardColorText.value;
+        description.style.color = cardColorText;
         content.appendChild(description);
 
         card.appendChild(content);
